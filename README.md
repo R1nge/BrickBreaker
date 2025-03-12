@@ -1,3 +1,7 @@
+I also made a version using sprites instead of UI	
+https://github.com/R1nge/BrickBreaker/tree/sprites
+Took approx 1-1.5 hours more
+
 # Features
 - Game loop (Game, win, lose)
 - Brick break sounds
