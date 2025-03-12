@@ -10,7 +10,6 @@ namespace _Assets.Scripts.Services.StateMachine.States
 {
 	public class GameState : IAsyncState
 	{
-		private readonly BallFactory _ballFactory;
 		private readonly BrickGenerator _brickGenerator;
 		private readonly PadFactory _padFactory;
 		private readonly PlayerInput _playerInput;
@@ -19,13 +18,12 @@ namespace _Assets.Scripts.Services.StateMachine.States
 		private readonly GameStateMachine _stateMachine;
 		private readonly UIStateMachine _uiStateMachine;
 
-		public GameState(GameStateMachine stateMachine, UIStateMachine uiStateMachine, BallFactory ballFactory,
+		public GameState(GameStateMachine stateMachine, UIStateMachine uiStateMachine,
 			BrickGenerator brickGenerator, PadFactory padFactory, SpawnPointService spawnPointService,
 			PlayerInput playerInput, ScoreHolder scoreHolder)
 		{
 			_uiStateMachine = uiStateMachine;
 			_stateMachine = stateMachine;
-			_ballFactory = ballFactory;
 			_brickGenerator = brickGenerator;
 			_padFactory = padFactory;
 			_spawnPointService = spawnPointService;
@@ -37,8 +35,6 @@ namespace _Assets.Scripts.Services.StateMachine.States
 		{
 			await _uiStateMachine.SwitchState(UIStateType.Game);
 			_playerInput.Enable();
-			var ballParent = _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Ball);
-			_ballFactory.Create(ballParent.position, ballParent.root);
 			var brickParent = _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Brick);
 			_brickGenerator.Generate(brickParent, 5, 5);
 			var padParent = _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Pad);

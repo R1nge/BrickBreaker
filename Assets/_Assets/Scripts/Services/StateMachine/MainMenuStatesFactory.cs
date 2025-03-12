@@ -40,7 +40,7 @@ namespace _Assets.Scripts.Services.StateMachine
 				case GameStateType.Init:
 					return new InitState(gameStateMachine, _uiStateMachine);
 				case GameStateType.Game:
-					return new GameState(gameStateMachine, _uiStateMachine, _ballFactory, _brickGenerator, _padFactory,
+					return new GameState(gameStateMachine, _uiStateMachine, _brickGenerator, _padFactory,
 						_spawnPointService, _playerInput, _scoreHolder);
 				default:
 					throw new ArgumentOutOfRangeException(nameof(gameStateType), gameStateType, null);
