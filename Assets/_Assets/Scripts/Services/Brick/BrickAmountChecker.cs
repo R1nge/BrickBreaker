@@ -41,5 +41,10 @@ namespace _Assets.Scripts.Services.Brick
 				_gameStateMachine.SwitchState(GameStateType.Win).Forget();
 			}
 		}
+
+		public void Reset()
+		{
+			_currentBricks = 0;
+		}
 	}
 }

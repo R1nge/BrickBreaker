@@ -20,7 +20,6 @@ namespace _Assets.Scripts.Gameplay.Pad
 		{
 			Vector3 newPosition = _padTransform.position;
 			newPosition.x = limitX + (limitX * _playerInput.PositionXNormalized) + (_padRectTransform.rect.width / 2);
-			Debug.Log(_playerInput.PositionXNormalized);
 			_padTransform.position = newPosition;
 		}
 	}

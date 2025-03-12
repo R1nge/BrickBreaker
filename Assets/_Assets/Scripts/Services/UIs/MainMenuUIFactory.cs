@@ -7,32 +7,36 @@ using VContainer.Unity;
 
 namespace _Assets.Scripts.Services.UIs
 {
-    public class MainMenuUIFactory
-    {
-        private readonly IObjectResolver _objectResolver;
-        private readonly ConfigProvider _configProvider;
+	public class MainMenuUIFactory
+	{
+		private readonly ConfigProvider _configProvider;
+		private readonly IObjectResolver _objectResolver;
 
-        public MainMenuUIFactory(IObjectResolver objectResolver, ConfigProvider configProvider)
-        {
-            _objectResolver = objectResolver;
-            _configProvider = configProvider;
-        }
+		public MainMenuUIFactory(IObjectResolver objectResolver, ConfigProvider configProvider)
+		{
+			_objectResolver = objectResolver;
+			_configProvider = configProvider;
+		}
 
-        public GameObject CreateUI(UIStateType uiStateType)
-        {
-            switch (uiStateType)
-            {
-                case UIStateType.None:
-                    break;
-                case UIStateType.Loading:
-                    return _objectResolver.Instantiate(_configProvider.UIConfig.LoadingUI);
-                case UIStateType.Game:
-                    return _objectResolver.Instantiate(_configProvider.UIConfig.GameUI);
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(uiStateType), uiStateType, null);
-            }
+		public GameObject CreateUI(UIStateType uiStateType)
+		{
+			switch (uiStateType)
+			{
+				case UIStateType.None:
+					break;
+				case UIStateType.Loading:
+					return _objectResolver.Instantiate(_configProvider.UIConfig.LoadingUI);
+				case UIStateType.Game:
+					return _objectResolver.Instantiate(_configProvider.UIConfig.GameUI);
+				case UIStateType.Gameover:
+					return _objectResolver.Instantiate(_configProvider.UIConfig.GameoverUI);
+				case UIStateType.Win:
+					return _objectResolver.Instantiate(_configProvider.UIConfig.WinUI);
+				default:
+					throw new ArgumentOutOfRangeException(nameof(uiStateType), uiStateType, null);
+			}
 
-            return null;
-        }
-    }
+			return null;
+		}
+	}
 }
