@@ -141,6 +141,7 @@ MonoBehaviour:
     rgba: 4294916472
   hitsToDestroy: 1
   points: 100
+  audioSource: {fileID: 2374650906026618148, guid: 6dfc9ab52ca6e8a46bf4d2ecc0499800, type: 3}
 --- !u!61 &6954493656404001835
 BoxCollider2D:
   m_ObjectHideFlags: 0
