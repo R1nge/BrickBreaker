@@ -45,6 +45,12 @@ namespace _Assets.Scripts.Gameplay.Ball
 					reflectionDirection = ((Vector2)_lastFrameVelocity.normalized + Vector2.up).normalized;
 				}
 
+				const float minimumMagnitude = 100f;
+				if (reflectionDirection.magnitude < minimumMagnitude)
+				{
+					reflectionDirection = reflectionDirection.normalized * minimumMagnitude;
+				}
+
 				rigidbody2D.AddForce(reflectionDirection * reflectionForce * rigidbody2D.mass, ForceMode2D.Impulse);
 
 				if (other.gameObject.TryGetComponent(out BrickView brickView))
