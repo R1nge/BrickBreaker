@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6795944614039103242}
-  limitX: 2
+  limitX: 3.5
   ballSpawnPoint: {fileID: 9100740847035973232}
 --- !u!1 &7603962588988611448
 GameObject:

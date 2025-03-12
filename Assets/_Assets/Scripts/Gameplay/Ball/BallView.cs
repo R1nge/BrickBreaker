@@ -13,6 +13,8 @@ namespace _Assets.Scripts.Gameplay.Ball
 		[SerializeField] private new Rigidbody2D rigidbody2D;
 		[SerializeField] private float reflectionForce = 500f;
 		[SerializeField] private float gravityForce;
+		private readonly float _limitX = 3f;
+		private readonly float _limitY = 5.5f;
 		private bool _canCollide = true;
 		[Inject] private GameStateMachine _gameStateMachine;
 		private Vector3 _lastFrameVelocity;
@@ -26,6 +28,27 @@ namespace _Assets.Scripts.Gameplay.Ball
 			float clampX = Mathf.Clamp(rigidbody2D.velocity.x, -maxVelocity, maxVelocity);
 			float clampY = Mathf.Clamp(rigidbody2D.velocity.y, -maxVelocity, maxVelocity);
 			rigidbody2D.velocity = new Vector2(clampX, clampY);
+
+			if (rigidbody2D.position.x < -_limitX)
+			{
+				rigidbody2D.AddForce(Vector2.right * (reflectionForce * rigidbody2D.mass), ForceMode2D.Impulse);
+			}
+
+			if (rigidbody2D.position.x > _limitX)
+			{
+				rigidbody2D.AddForce(Vector2.left * (reflectionForce * rigidbody2D.mass), ForceMode2D.Impulse);
+			}
+
+			if (rigidbody2D.position.y > _limitY)
+			{
+				rigidbody2D.AddForce(Vector2.down * (reflectionForce * rigidbody2D.mass), ForceMode2D.Impulse);
+			}
+
+			if (rigidbody2D.position.y < -_limitY)
+			{
+				_gameStateMachine.SwitchState(GameStateType.Gameover).Forget();
+				Destroy(gameObject);
+			}
 		}
 
 		private IEnumerator OnCollisionEnter2D(Collision2D other)
