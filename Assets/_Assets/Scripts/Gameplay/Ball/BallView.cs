@@ -7,6 +7,7 @@ namespace _Assets.Scripts.Gameplay.Ball
 {
 	public class BallView : MonoBehaviour
 	{
+		[SerializeField] private float maxVelocity = 500f;
 		[SerializeField] private new Rigidbody2D rigidbody2D;
 		[SerializeField] private float reflectionForce = 500f;
 		[SerializeField] private float gravityForce;
@@ -20,7 +21,13 @@ namespace _Assets.Scripts.Gameplay.Ball
 
 		private void Update() => _lastFrameVelocity = rigidbody2D.velocity;
 
-		private void FixedUpdate() => rigidbody2D.AddForce(Vector2.down * (gravityForce * rigidbody2D.mass));
+		private void FixedUpdate()
+		{
+			rigidbody2D.AddForce(Vector2.down * (gravityForce * rigidbody2D.mass));
+			var clampX = Mathf.Clamp(rigidbody2D.velocity.x, -maxVelocity, maxVelocity);
+			var clampY = Mathf.Clamp(rigidbody2D.velocity.y, -maxVelocity, maxVelocity);
+			rigidbody2D.velocity = new Vector2(clampX, clampY);
+		}
 
 		private void OnCollisionEnter2D(Collision2D other)
 		{
