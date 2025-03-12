@@ -17,7 +17,7 @@ namespace _Assets.Scripts.Gameplay.Pad
 
 		private void Update()
 		{
-			_padController.Move(limitX);
+			//	_padController.Move(limitX);
 		}
 	}
 }

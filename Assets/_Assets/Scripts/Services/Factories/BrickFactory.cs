@@ -20,7 +20,7 @@ namespace _Assets.Scripts.Services.Factories
 		public BrickView Create(Vector2 position, Transform parent)
 		{
 			var brick = _objectResolver.Instantiate(_configProvider.GameConfig.BrickView);
-			brick.transform.SetParent(parent);
+			brick.transform.SetParent(parent, true);
 			brick.transform.position = position;
 			return brick;
 		}

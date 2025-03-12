@@ -2,7 +2,6 @@
 using _Assets.Scripts.Services.SpawnPoints;
 using _Assets.Scripts.Services.UIs.StateMachine;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace _Assets.Scripts.Services.StateMachine.States
 {
@@ -29,10 +28,13 @@ namespace _Assets.Scripts.Services.StateMachine.States
 		public async UniTask Enter()
 		{
 			await _uiStateMachine.SwitchState(UIStateType.Game);
-			_ballFactory.Create(Vector2.zero, _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Ball));
-			_brickFactory.Create(Vector2.zero,
-				_spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Brick));
-			_padFactory.Create(Vector2.zero, _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Pad));
+			await UniTask.DelayFrame(1);
+			var ballParent = _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Ball);
+			_ballFactory.Create(ballParent.position, ballParent.root);
+			var brickParent = _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Brick);
+			_brickFactory.Create(brickParent.position, brickParent.root);
+			var padParent = _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Pad);
+			_padFactory.Create(padParent.position, padParent.root);
 		}
 
 		public async UniTask Exit()
