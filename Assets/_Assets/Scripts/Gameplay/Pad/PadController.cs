@@ -5,22 +5,22 @@ namespace _Assets.Scripts.Gameplay.Pad
 {
 	public class PadController
 	{
-		private readonly RectTransform _padRectTransform;
-		private readonly Transform _padTransform;
 		private readonly PlayerInput _playerInput;
+		private readonly SpriteRenderer _spriteRenderer;
+		private readonly Transform _transform;
 
-		public PadController(Transform padTransform, PlayerInput playerInput)
+		public PadController(Transform transform, SpriteRenderer spriteRenderer, PlayerInput playerInput)
 		{
-			_padTransform = padTransform;
+			_transform = transform;
+			_spriteRenderer = spriteRenderer;
 			_playerInput = playerInput;
-			_padRectTransform = (RectTransform)padTransform;
 		}
 
 		public void Move(float limitX)
 		{
-			Vector3 newPosition = _padTransform.position;
-			newPosition.x = limitX + limitX * _playerInput.PositionXNormalized + _padRectTransform.rect.width / 2;
-			_padTransform.position = newPosition;
+			Vector3 newPosition = _transform.position;
+			newPosition.x = limitX * _playerInput.PositionXNormalized;
+			_transform.position = newPosition;
 		}
 	}
 }

@@ -17,10 +17,9 @@ namespace _Assets.Scripts.Services.Factories
 			_configProvider = configProvider;
 		}
 
-		public BallView Create(Vector2 position, Transform parent)
+		public BallView Create(Vector3 position, Transform parent)
 		{
 			BallView ball = _objectResolver.Instantiate(_configProvider.GameConfig.BallView);
-			ball.transform.SetParent(parent, true);
 			ball.transform.position = position;
 			return ball;
 		}

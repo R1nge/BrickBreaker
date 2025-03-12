@@ -17,10 +17,9 @@ namespace _Assets.Scripts.Services.Factories
 			_configProvider = configProvider;
 		}
 
-		public PadView Create(Vector2 position, Transform parent)
+		public PadView Create(Vector3 position, Transform parent)
 		{
 			PadView pad = _objectResolver.Instantiate(_configProvider.GameConfig.Pad);
-			pad.transform.SetParent(parent, true);
 			pad.transform.position = position;
 			return pad;
 		}

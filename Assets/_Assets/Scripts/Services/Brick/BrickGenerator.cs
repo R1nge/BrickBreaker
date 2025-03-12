@@ -14,8 +14,8 @@ namespace _Assets.Scripts.Services.Brick
 			float screenHeight = 2f * Camera.main.orthographicSize;
 			float screenWidth = screenHeight * Camera.main.aspect;
 
-			const int BRICK_WIDTH = 200;
-			const int BRICK_HEIGHT = 100;
+			const int BRICK_WIDTH = 1;
+			const int BRICK_HEIGHT = 1;
 
 			Vector3 startPointOffset = startPoint.position;
 			startPointOffset.x -= screenWidth / 2f - BRICK_WIDTH / 2f; // Center

@@ -21,10 +21,9 @@ namespace _Assets.Scripts.Services.Factories
 			_brickAmountChecker = brickAmountChecker;
 		}
 
-		public BrickView Create(Vector2 position, Transform parent)
+		public BrickView Create(Vector3 position, Transform parent)
 		{
 			BrickView brick = _objectResolver.Instantiate(_configProvider.GameConfig.BrickView);
-			brick.transform.SetParent(parent, true);
 			brick.transform.position = position;
 			_brickAmountChecker.Add(1);
 			return brick;

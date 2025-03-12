@@ -17,11 +17,6 @@ namespace _Assets.Scripts.Gameplay.Ball
 		[Inject] private GameStateMachine _gameStateMachine;
 		private Vector3 _lastFrameVelocity;
 
-		private void Start()
-		{
-			rigidbody2D.velocity = Vector2.down * maxVelocity;
-			_lastFrameVelocity = rigidbody2D.velocity;
-		}
 
 		private void Update() => _lastFrameVelocity = rigidbody2D.velocity;
 
