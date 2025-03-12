@@ -17,17 +17,19 @@ namespace _Assets.Scripts.Services.Brick
 			float screenHeight = 2f * Camera.main.orthographicSize;
 			float screenWidth = screenHeight * Camera.main.aspect;
 
+			const int BRICK_WIDTH = 200;
+			const int BRICK_HEIGHT = 100;
+
 			Vector3 startPointOffset = startPoint.position;
-			startPointOffset.x -= screenWidth / 2f; // Center
+			startPointOffset.x -= screenWidth / 2f - BRICK_WIDTH / 2f; // Center
 
 			for (int y = 0; y < column; y++)
 			{
 				for (int x = 0; x < rows; x++)
 				{
-					const int BRICK_WIDTH = 100;
 					Vector3 offset = new(
 						(x - (rows / 2f)) * BRICK_WIDTH, // Center the bricks around the middle
-						y * 100,
+						y * BRICK_HEIGHT,
 						0
 					);
 					_brickFactory.Create(startPointOffset + offset, startPoint.root);
