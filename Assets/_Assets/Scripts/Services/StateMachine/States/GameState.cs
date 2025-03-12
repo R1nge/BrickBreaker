@@ -1,5 +1,6 @@
 ﻿using _Assets.Scripts.Services.Factories;
 using _Assets.Scripts.Services.Input;
+using _Assets.Scripts.Services.Score;
 using _Assets.Scripts.Services.SpawnPoints;
 using _Assets.Scripts.Services.UIs.StateMachine;
 using Cysharp.Threading.Tasks;
@@ -12,13 +13,14 @@ namespace _Assets.Scripts.Services.StateMachine.States
 		private readonly BrickFactory _brickFactory;
 		private readonly PadFactory _padFactory;
 		private readonly PlayerInput _playerInput;
+		private readonly ScoreHolder _scoreHolder;
 		private readonly SpawnPointService _spawnPointService;
 		private readonly GameStateMachine _stateMachine;
 		private readonly UIStateMachine _uiStateMachine;
 
 		public GameState(GameStateMachine stateMachine, UIStateMachine uiStateMachine, BallFactory ballFactory,
 			BrickFactory brickFactory, PadFactory padFactory, SpawnPointService spawnPointService,
-			PlayerInput playerInput)
+			PlayerInput playerInput, ScoreHolder scoreHolder)
 		{
 			_uiStateMachine = uiStateMachine;
 			_stateMachine = stateMachine;
@@ -27,6 +29,7 @@ namespace _Assets.Scripts.Services.StateMachine.States
 			_padFactory = padFactory;
 			_spawnPointService = spawnPointService;
 			_playerInput = playerInput;
+			_scoreHolder = scoreHolder;
 		}
 
 		public async UniTask Enter()
@@ -43,6 +46,7 @@ namespace _Assets.Scripts.Services.StateMachine.States
 
 		public async UniTask Exit()
 		{
+			_scoreHolder.ResetPoints();
 			_playerInput.Disable();
 		}
 	}
