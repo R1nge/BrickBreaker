@@ -7,7 +7,6 @@ namespace _Assets.Scripts.Gameplay.Pad
 {
 	public class PadView : MonoBehaviour
 	{
-		//TODO: use screen or rect width
 		[SerializeField] private SpriteRenderer spriteRenderer;
 		[SerializeField] private float limitX;
 		[SerializeField] private Transform ballSpawnPoint;

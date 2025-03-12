@@ -50,7 +50,7 @@ namespace _Assets.Scripts.Services.StateMachine
 				case GameStateType.Gameover:
 					return new GameOverState(_uiStateMachine, _scoreHolder, _brickHolder, _ballHolder);
 				case GameStateType.Win:
-					return new WinState(_uiStateMachine, _scoreHolder, _brickHolder);
+					return new WinState(_uiStateMachine, _scoreHolder, _brickHolder, _ballHolder);
 				default:
 					throw new ArgumentOutOfRangeException(nameof(gameStateType), gameStateType, null);
 			}

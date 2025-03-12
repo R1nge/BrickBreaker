@@ -33,6 +33,8 @@ namespace _Assets.Scripts.Services.Brick
 			{
 				Object.Destroy(_bricks[i]);
 			}
+
+			_bricks.Clear();
 		}
 	}
 }
