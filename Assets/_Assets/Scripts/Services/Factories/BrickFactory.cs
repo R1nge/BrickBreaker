@@ -8,12 +8,13 @@ namespace _Assets.Scripts.Services.Factories
 {
 	public class BrickFactory
 	{
-		private readonly IObjectResolver _objectResolver;
 		private readonly ConfigProvider _configProvider;
+		private readonly IObjectResolver _objectResolver;
 
-		private BrickFactory(IObjectResolver objectResolver)
+		private BrickFactory(IObjectResolver objectResolver, ConfigProvider configProvider)
 		{
 			_objectResolver = objectResolver;
+			_configProvider = configProvider;
 		}
 
 		public BrickView Create(Vector2 position, Transform parent)
