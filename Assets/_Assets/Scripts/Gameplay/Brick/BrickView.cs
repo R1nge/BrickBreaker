@@ -12,7 +12,7 @@ namespace _Assets.Scripts.Gameplay.Brick
 		[SerializeField] private int hitsToDestroy;
 		[SerializeField] private int points;
 		[SerializeField] private AudioSource audioSource;
-		[Inject] private BrickAmountChecker _brickAmountChecker;
+		[Inject] private BrickHolder _brickHolder;
 		private int _currentHits;
 		[Inject] private ScoreHolder _scoreHolder;
 
@@ -24,7 +24,7 @@ namespace _Assets.Scripts.Gameplay.Brick
 			if (_currentHits >= hitsToDestroy)
 			{
 				_scoreHolder.AddPoints(points);
-				_brickAmountChecker.Remove(1);
+				_brickHolder.Remove(gameObject);
 				Instantiate(audioSource, transform.position, Quaternion.identity);
 				Destroy(gameObject);
 			}

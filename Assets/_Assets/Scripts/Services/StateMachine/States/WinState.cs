@@ -7,15 +7,15 @@ namespace _Assets.Scripts.Services.StateMachine.States
 {
 	public class WinState : IAsyncState
 	{
-		private readonly BrickAmountChecker _brickAmountChecker;
+		private readonly BrickHolder _brickHolder;
 		private readonly ScoreHolder _scoreHolder;
 		private readonly UIStateMachine _uiStateMachine;
 
-		public WinState(UIStateMachine uiStateMachine, ScoreHolder scoreHolder, BrickAmountChecker brickAmountChecker)
+		public WinState(UIStateMachine uiStateMachine, ScoreHolder scoreHolder, BrickHolder brickHolder)
 		{
 			_uiStateMachine = uiStateMachine;
 			_scoreHolder = scoreHolder;
-			_brickAmountChecker = brickAmountChecker;
+			_brickHolder = brickHolder;
 		}
 
 		public async UniTask Enter() => await _uiStateMachine.SwitchState(UIStateType.Win);
@@ -23,7 +23,7 @@ namespace _Assets.Scripts.Services.StateMachine.States
 		public async UniTask Exit()
 		{
 			_scoreHolder.ResetPoints();
-			_brickAmountChecker.Reset();
+			_brickHolder.Reset();
 		}
 	}
 }

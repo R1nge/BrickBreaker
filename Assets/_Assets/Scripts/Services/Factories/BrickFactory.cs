@@ -9,23 +9,23 @@ namespace _Assets.Scripts.Services.Factories
 {
 	public class BrickFactory
 	{
-		private readonly BrickAmountChecker _brickAmountChecker;
+		private readonly BrickHolder _brickHolder;
 		private readonly ConfigProvider _configProvider;
 		private readonly IObjectResolver _objectResolver;
 
 		private BrickFactory(IObjectResolver objectResolver, ConfigProvider configProvider,
-			BrickAmountChecker brickAmountChecker)
+			BrickHolder brickHolder)
 		{
 			_objectResolver = objectResolver;
 			_configProvider = configProvider;
-			_brickAmountChecker = brickAmountChecker;
+			_brickHolder = brickHolder;
 		}
 
 		public BrickView Create(Vector3 position, Transform parent)
 		{
 			BrickView brick = _objectResolver.Instantiate(_configProvider.GameConfig.BrickView);
 			brick.transform.position = position;
-			_brickAmountChecker.Add(1);
+			_brickHolder.Add(brick.gameObject);
 			return brick;
 		}
 	}

@@ -16,7 +16,7 @@ namespace _Assets.Scripts.CompositionRoot
 	{
 		protected override void Configure(IContainerBuilder builder)
 		{
-			builder.Register<BrickAmountChecker>(Lifetime.Singleton);
+			builder.Register<BrickHolder>(Lifetime.Singleton);
 			builder.Register<BrickGenerator>(Lifetime.Singleton);
 			builder.Register<ScoreHolder>(Lifetime.Singleton);
 			builder.Register<SpawnPointService>(Lifetime.Singleton);

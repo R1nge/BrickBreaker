@@ -7,16 +7,16 @@ namespace _Assets.Scripts.Services.StateMachine.States
 {
 	public class GameOverState : IAsyncState
 	{
-		private readonly BrickAmountChecker _brickAmountChecker;
+		private readonly BrickHolder _brickHolder;
 		private readonly ScoreHolder _scoreHolder;
 		private readonly UIStateMachine _uiStateMachine;
 
 		public GameOverState(UIStateMachine uiStateMachine, ScoreHolder scoreHolder,
-			BrickAmountChecker brickAmountChecker)
+			BrickHolder brickHolder)
 		{
 			_uiStateMachine = uiStateMachine;
 			_scoreHolder = scoreHolder;
-			_brickAmountChecker = brickAmountChecker;
+			_brickHolder = brickHolder;
 		}
 
 		public async UniTask Enter() => await _uiStateMachine.SwitchState(UIStateType.Gameover);
@@ -25,7 +25,7 @@ namespace _Assets.Scripts.Services.StateMachine.States
 		public async UniTask Exit()
 		{
 			//TODO: clear map, player, score...
-			_brickAmountChecker.Reset();
+			_brickHolder.Reset();
 			_scoreHolder.ResetPoints();
 		}
 	}

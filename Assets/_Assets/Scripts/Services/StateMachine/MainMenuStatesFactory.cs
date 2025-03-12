@@ -12,8 +12,8 @@ namespace _Assets.Scripts.Services.StateMachine
 	public class MainMenuStatesFactory
 	{
 		private readonly BallFactory _ballFactory;
-		private readonly BrickAmountChecker _brickAmountChecker;
 		private readonly BrickGenerator _brickGenerator;
+		private readonly BrickHolder _brickHolder;
 		private readonly PadFactory _padFactory;
 		private readonly PlayerInput _playerInput;
 		private readonly ScoreHolder _scoreHolder;
@@ -23,7 +23,7 @@ namespace _Assets.Scripts.Services.StateMachine
 		private MainMenuStatesFactory(UIStateMachine uiStateMachine, BallFactory ballFactory,
 			BrickGenerator brickGenerator,
 			PadFactory padFactory, SpawnPointService spawnPointService, PlayerInput playerInput,
-			ScoreHolder scoreHolder, BrickAmountChecker brickAmountChecker)
+			ScoreHolder scoreHolder, BrickHolder brickHolder)
 		{
 			_uiStateMachine = uiStateMachine;
 			_ballFactory = ballFactory;
@@ -32,7 +32,7 @@ namespace _Assets.Scripts.Services.StateMachine
 			_spawnPointService = spawnPointService;
 			_playerInput = playerInput;
 			_scoreHolder = scoreHolder;
-			_brickAmountChecker = brickAmountChecker;
+			_brickHolder = brickHolder;
 		}
 
 		public IAsyncState CreateAsyncState(GameStateType gameStateType, GameStateMachine gameStateMachine)
@@ -45,9 +45,9 @@ namespace _Assets.Scripts.Services.StateMachine
 					return new GameState(gameStateMachine, _uiStateMachine, _brickGenerator, _padFactory,
 						_spawnPointService, _playerInput, _scoreHolder);
 				case GameStateType.Gameover:
-					return new GameOverState(_uiStateMachine, _scoreHolder, _brickAmountChecker);
+					return new GameOverState(_uiStateMachine, _scoreHolder, _brickHolder);
 				case GameStateType.Win:
-					return new WinState(_uiStateMachine, _scoreHolder, _brickAmountChecker);
+					return new WinState(_uiStateMachine, _scoreHolder, _brickHolder);
 				default:
 					throw new ArgumentOutOfRangeException(nameof(gameStateType), gameStateType, null);
 			}
