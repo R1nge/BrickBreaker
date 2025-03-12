@@ -125,6 +125,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400853c78e3b44139d94acc68ef5556d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 3743726117783476144}
+  colors:
+  - serializedVersion: 2
+    rgba: 4283825998
+  - serializedVersion: 2
+    rgba: 4294959929
+  - serializedVersion: 2
+    rgba: 4281975039
+  - serializedVersion: 2
+    rgba: 4285676031
+  - serializedVersion: 2
+    rgba: 4294916587
+  - serializedVersion: 2
+    rgba: 4294916472
   hitsToDestroy: 1
   points: 100
 --- !u!61 &6954493656404001835
