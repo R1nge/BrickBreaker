@@ -7,10 +7,7 @@ namespace _Assets.Scripts.Services.UIs.StateMachine
 	{
 		private readonly MainMenuUIFactory _mainMenuUIFactory;
 
-		private MainMenuUIStatesFactory(MainMenuUIFactory mainMenuUIFactory)
-		{
-			_mainMenuUIFactory = mainMenuUIFactory;
-		}
+		private MainMenuUIStatesFactory(MainMenuUIFactory mainMenuUIFactory) => _mainMenuUIFactory = mainMenuUIFactory;
 
 		public IAsyncState CreateState(UIStateType uiStateType, UIStateMachine uiStateMachine)
 		{

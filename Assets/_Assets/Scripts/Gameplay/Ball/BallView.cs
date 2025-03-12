@@ -35,14 +35,14 @@ namespace _Assets.Scripts.Gameplay.Ball
 
 		private IEnumerator OnCollisionEnter2D(Collision2D other)
 		{
-			var reflectionDirection = Vector2.Reflect(_lastFrameVelocity, other.contacts[0].normal);
+			Vector2 reflectionDirection = Vector2.Reflect(_lastFrameVelocity, other.contacts[0].normal);
 
 			// This call yield 'wierd' results, possible solution is to use an up vector for the pad and down for the bricks
 			if (reflectionDirection == Vector2.zero)
 			{
 				// Pick a random point on the unit circle
 				float angle = Random.Range(0f, Mathf.PI * 2);
-				Vector2 randomPoint = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+				Vector2 randomPoint = new(Mathf.Cos(angle), Mathf.Sin(angle));
 
 				reflectionDirection = ((Vector2)_lastFrameVelocity.normalized + randomPoint).normalized;
 			}
@@ -61,9 +61,7 @@ namespace _Assets.Scripts.Gameplay.Ball
 			}
 		}
 
-		private void OnTriggerEnter2D(Collider2D other)
-		{
+		private void OnTriggerEnter2D(Collider2D other) =>
 			_gameStateMachine.SwitchState(GameStateType.Gameover).Forget();
-		}
 	}
 }

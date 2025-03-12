@@ -19,7 +19,7 @@ namespace _Assets.Scripts.Services.Factories
 
 		public BallView Create(Vector2 position, Transform parent)
 		{
-			var ball = _objectResolver.Instantiate(_configProvider.GameConfig.BallView);
+			BallView ball = _objectResolver.Instantiate(_configProvider.GameConfig.BallView);
 			ball.transform.SetParent(parent, true);
 			ball.transform.position = position;
 			return ball;

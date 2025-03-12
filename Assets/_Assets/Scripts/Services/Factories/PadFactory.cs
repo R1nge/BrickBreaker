@@ -19,7 +19,7 @@ namespace _Assets.Scripts.Services.Factories
 
 		public PadView Create(Vector2 position, Transform parent)
 		{
-			var pad = _objectResolver.Instantiate(_configProvider.GameConfig.Pad);
+			PadView pad = _objectResolver.Instantiate(_configProvider.GameConfig.Pad);
 			pad.transform.SetParent(parent, true);
 			pad.transform.position = position;
 			return pad;

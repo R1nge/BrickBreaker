@@ -10,10 +10,7 @@ namespace _Assets.Scripts.Services.Brick
 
 		private int _currentBricks;
 
-		private BrickAmountChecker(GameStateMachine gameStateMachine)
-		{
-			_gameStateMachine = gameStateMachine;
-		}
+		private BrickAmountChecker(GameStateMachine gameStateMachine) => _gameStateMachine = gameStateMachine;
 
 		public void Add(int amount)
 		{
@@ -42,9 +39,6 @@ namespace _Assets.Scripts.Services.Brick
 			}
 		}
 
-		public void Reset()
-		{
-			_currentBricks = 0;
-		}
+		public void Reset() => _currentBricks = 0;
 	}
 }

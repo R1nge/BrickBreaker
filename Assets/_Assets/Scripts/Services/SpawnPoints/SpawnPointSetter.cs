@@ -8,9 +8,6 @@ namespace _Assets.Scripts.Services.SpawnPoints
 		[SerializeField] private SpawnPointService.SpawnPointType spawnPointType;
 		[Inject] private SpawnPointService _spawnPointService;
 
-		private void Awake()
-		{
-			_spawnPointService.SetSpawnPoint(spawnPointType, transform);
-		}
+		private void Awake() => _spawnPointService.SetSpawnPoint(spawnPointType, transform);
 	}
 }

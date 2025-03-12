@@ -6,11 +6,11 @@ namespace _Assets.Scripts.Services.Input
 	{
 		public bool Enabled { get; private set; }
 
+		public float PositionXNormalized { get; private set; }
+
 		public void Enable() => Enabled = true;
 
 		public void Disable() => Enabled = false;
-
-		public float PositionXNormalized { get; private set; }
 
 		public void SetPlayerPositionX(float positionX)
 		{

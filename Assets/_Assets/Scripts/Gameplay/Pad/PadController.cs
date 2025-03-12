@@ -19,7 +19,7 @@ namespace _Assets.Scripts.Gameplay.Pad
 		public void Move(float limitX)
 		{
 			Vector3 newPosition = _padTransform.position;
-			newPosition.x = limitX + (limitX * _playerInput.PositionXNormalized) + (_padRectTransform.rect.width / 2);
+			newPosition.x = limitX + limitX * _playerInput.PositionXNormalized + _padRectTransform.rect.width / 2;
 			_padTransform.position = newPosition;
 		}
 	}

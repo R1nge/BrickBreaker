@@ -5,6 +5,7 @@ using _Assets.Scripts.Services.Score;
 using _Assets.Scripts.Services.SpawnPoints;
 using _Assets.Scripts.Services.UIs.StateMachine;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace _Assets.Scripts.Services.StateMachine.States
 {
@@ -35,9 +36,9 @@ namespace _Assets.Scripts.Services.StateMachine.States
 		{
 			await _uiStateMachine.SwitchState(UIStateType.Game);
 			_playerInput.Enable();
-			var brickParent = _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Brick);
+			Transform brickParent = _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Brick);
 			_brickGenerator.Generate(brickParent, 5, 5);
-			var padParent = _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Pad);
+			Transform padParent = _spawnPointService.GetSpawnPoint(SpawnPointService.SpawnPointType.Pad);
 			_padFactory.Create(padParent.position, padParent.root);
 		}
 

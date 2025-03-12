@@ -19,12 +19,9 @@ namespace _Assets.Scripts.Services.StateMachine.States
 			_brickAmountChecker = brickAmountChecker;
 		}
 
-		public async UniTask Enter()
-		{
-			await _uiStateMachine.SwitchState(UIStateType.Gameover);
-			//TODO: save score
-		}
+		public async UniTask Enter() => await _uiStateMachine.SwitchState(UIStateType.Gameover);
 
+		//TODO: save score
 		public async UniTask Exit()
 		{
 			//TODO: clear map, player, score...

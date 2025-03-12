@@ -10,7 +10,7 @@ namespace _Assets.Scripts.Gameplay
 
 		private void Awake()
 		{
-			var clip = clips[Random.Range(0, clips.Length)];
+			AudioClip clip = clips[Random.Range(0, clips.Length)];
 			audioSource.clip = clip;
 			audioSource.Play();
 			Destroy(gameObject, clip.length);

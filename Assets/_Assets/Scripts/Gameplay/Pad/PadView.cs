@@ -14,19 +14,10 @@ namespace _Assets.Scripts.Gameplay.Pad
 		private PadController _padController;
 		[Inject] private PlayerInput _playerInput;
 
-		private void Awake()
-		{
-			_padController = new PadController(transform, _playerInput);
-		}
+		private void Awake() => _padController = new PadController(transform, _playerInput);
 
-		private void Start()
-		{
-			_ballFactory.Create(ballSpawnPoint.position, ballSpawnPoint.root);
-		}
+		private void Start() => _ballFactory.Create(ballSpawnPoint.position, ballSpawnPoint.root);
 
-		private void Update()
-		{
-			_padController.Move(limitX);
-		}
+		private void Update() => _padController.Move(limitX);
 	}
 }

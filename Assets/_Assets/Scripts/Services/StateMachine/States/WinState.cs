@@ -18,10 +18,7 @@ namespace _Assets.Scripts.Services.StateMachine.States
 			_brickAmountChecker = brickAmountChecker;
 		}
 
-		public async UniTask Enter()
-		{
-			await _uiStateMachine.SwitchState(UIStateType.Win);
-		}
+		public async UniTask Enter() => await _uiStateMachine.SwitchState(UIStateType.Win);
 
 		public async UniTask Exit()
 		{

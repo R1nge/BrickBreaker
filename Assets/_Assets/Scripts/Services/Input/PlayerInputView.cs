@@ -9,10 +9,7 @@ namespace _Assets.Scripts.Services.Input
 		[SerializeField] private Slider slider;
 		[Inject] private PlayerInput _playerInput;
 
-		private void Update()
-		{
-			SetPositionX();
-		}
+		private void Update() => SetPositionX();
 
 		public void SetPositionX() => _playerInput.SetPlayerPositionX(slider.value);
 	}

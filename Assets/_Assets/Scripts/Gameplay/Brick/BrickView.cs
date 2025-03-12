@@ -17,10 +17,7 @@ namespace _Assets.Scripts.Gameplay.Brick
 		private int _currentHits;
 		[Inject] private ScoreHolder _scoreHolder;
 
-		private void Awake()
-		{
-			ApplyRandomColorPreset();
-		}
+		private void Awake() => ApplyRandomColorPreset();
 
 		public void TryToDestroy()
 		{

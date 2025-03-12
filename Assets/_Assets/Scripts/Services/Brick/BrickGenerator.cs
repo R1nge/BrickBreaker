@@ -7,10 +7,7 @@ namespace _Assets.Scripts.Services.Brick
 	{
 		private readonly BrickFactory _brickFactory;
 
-		private BrickGenerator(BrickFactory brickFactory)
-		{
-			_brickFactory = brickFactory;
-		}
+		private BrickGenerator(BrickFactory brickFactory) => _brickFactory = brickFactory;
 
 		public void Generate(Transform startPoint, int rows, int column)
 		{
@@ -28,7 +25,7 @@ namespace _Assets.Scripts.Services.Brick
 				for (int x = 0; x < rows; x++)
 				{
 					Vector3 offset = new(
-						(x - (rows / 2f)) * BRICK_WIDTH, // Center the bricks around the middle
+						(x - rows / 2f) * BRICK_WIDTH, // Center the bricks around the middle
 						y * BRICK_HEIGHT,
 						0
 					);
