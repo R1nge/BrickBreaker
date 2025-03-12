@@ -2,9 +2,9 @@
 
 namespace _Assets.Scripts.Services
 {
-    public interface IAsyncState
-    {
-         UniTask Enter();
-         UniTask Exit();
-    }
+	public interface IAsyncState
+	{
+		UniTask Enter();
+		UniTask Exit();
+	}
 }
