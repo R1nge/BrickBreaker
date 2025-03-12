@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 6035695304736196973}
-  reflectionForce: 5000
+  reflectionForce: 8
   gravityForce: 10
 --- !u!58 &8802321217304027670
 CircleCollider2D:

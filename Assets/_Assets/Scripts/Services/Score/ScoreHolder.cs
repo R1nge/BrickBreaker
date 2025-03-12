@@ -23,7 +23,7 @@ namespace _Assets.Scripts.Services.Score
 		{
 			if (score <= 0)
 			{
-				Debug.LogWarning($"Trying to add {score}");
+				Debug.LogWarning($"[Score Holder] Trying to add {score}");
 				return;
 			}
 

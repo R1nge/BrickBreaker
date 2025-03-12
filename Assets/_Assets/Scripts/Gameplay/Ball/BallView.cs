@@ -9,6 +9,11 @@ namespace _Assets.Scripts.Gameplay.Ball
 		[SerializeField] private float gravityForce;
 		private Vector3 _lastFrameVelocity;
 
+		private void Start()
+		{
+			rigidbody2D.AddForce(Vector2.down * reflectionForce * rigidbody2D.mass, ForceMode2D.Impulse);
+		}
+
 		private void Update() => _lastFrameVelocity = rigidbody2D.velocity;
 
 		private void FixedUpdate() => rigidbody2D.AddForce(Vector2.down * (gravityForce * rigidbody2D.mass));
