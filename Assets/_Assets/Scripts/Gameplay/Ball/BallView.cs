@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using _Assets.Scripts.Services.StateMachine;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
+using VContainer;
 
 namespace _Assets.Scripts.Gameplay.Ball
 {
@@ -7,6 +10,7 @@ namespace _Assets.Scripts.Gameplay.Ball
 		[SerializeField] private new Rigidbody2D rigidbody2D;
 		[SerializeField] private float reflectionForce = 500f;
 		[SerializeField] private float gravityForce;
+		[Inject] private GameStateMachine _gameStateMachine;
 		private Vector3 _lastFrameVelocity;
 
 		private void Start()
@@ -22,6 +26,11 @@ namespace _Assets.Scripts.Gameplay.Ball
 		{
 			var reflectionDirection = Vector2.Reflect(_lastFrameVelocity, other.contacts[0].normal);
 			rigidbody2D.AddForce(reflectionDirection * reflectionForce * rigidbody2D.mass, ForceMode2D.Impulse);
+		}
+
+		private void OnTriggerEnter2D(Collider2D other)
+		{
+			_gameStateMachine.SwitchState(GameStateType.Gameover).Forget();
 		}
 	}
 }
