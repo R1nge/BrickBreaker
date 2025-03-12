@@ -6,6 +6,7 @@ namespace _Assets.Scripts.Gameplay.Pad
 {
 	public class PadView : MonoBehaviour
 	{
+		//TODO: use screen or rect width
 		[SerializeField] private float limitX;
 		private PadController _padController;
 		[Inject] private PlayerInput _playerInput;
@@ -17,7 +18,7 @@ namespace _Assets.Scripts.Gameplay.Pad
 
 		private void Update()
 		{
-			//	_padController.Move(limitX);
+			_padController.Move(limitX);
 		}
 	}
 }
