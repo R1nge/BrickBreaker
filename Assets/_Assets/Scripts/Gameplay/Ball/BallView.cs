@@ -35,22 +35,18 @@ namespace _Assets.Scripts.Gameplay.Ball
 
 		private IEnumerator OnCollisionEnter2D(Collision2D other)
 		{
-			Vector2 reflectionDirection = Vector2.Reflect(_lastFrameVelocity, other.contacts[0].normal);
-
-			// This call yield 'wierd' results, possible solution is to use an up vector for the pad and down for the bricks
-			if (reflectionDirection == Vector2.zero)
-			{
-				// Pick a random point on the unit circle
-				float angle = Random.Range(0f, Mathf.PI * 2);
-				Vector2 randomPoint = new(Mathf.Cos(angle), Mathf.Sin(angle));
-
-				reflectionDirection = ((Vector2)_lastFrameVelocity.normalized + randomPoint).normalized;
-			}
-
-			rigidbody2D.AddForce(reflectionDirection * reflectionForce * rigidbody2D.mass, ForceMode2D.Impulse);
-
 			if (_canCollide)
 			{
+				Vector2 reflectionDirection = Vector2.Reflect(_lastFrameVelocity, other.contacts[0].normal);
+
+				// This call yield 'wierd' results, possible solution is to use an up vector for the pad and down for the bricks
+				if (reflectionDirection == Vector2.zero)
+				{
+					reflectionDirection = ((Vector2)_lastFrameVelocity.normalized + Vector2.up).normalized;
+				}
+
+				rigidbody2D.AddForce(reflectionDirection * reflectionForce * rigidbody2D.mass, ForceMode2D.Impulse);
+
 				if (other.gameObject.TryGetComponent(out BrickView brickView))
 				{
 					_canCollide = false;
