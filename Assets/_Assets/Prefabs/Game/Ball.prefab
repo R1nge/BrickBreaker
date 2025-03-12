@@ -146,7 +146,7 @@ MonoBehaviour:
   maxVelocity: 10
   rigidbody2D: {fileID: 6035695304736196973}
   reflectionForce: 10
-  gravityForce: 0.001
+  gravityForce: 0.005
 --- !u!58 &8802321217304027670
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using _Assets.Scripts.Services.Brick;
+﻿using _Assets.Scripts.Services.Ball;
+using _Assets.Scripts.Services.Brick;
 using _Assets.Scripts.Services.Factories;
 using _Assets.Scripts.Services.Input;
 using _Assets.Scripts.Services.Score;
@@ -11,6 +12,7 @@ namespace _Assets.Scripts.Services.StateMachine.States
 {
 	public class GameState : IAsyncState
 	{
+		private readonly BallHolder _ballHolder;
 		private readonly BrickGenerator _brickGenerator;
 		private readonly PadFactory _padFactory;
 		private readonly PlayerInput _playerInput;
@@ -21,7 +23,7 @@ namespace _Assets.Scripts.Services.StateMachine.States
 
 		public GameState(GameStateMachine stateMachine, UIStateMachine uiStateMachine,
 			BrickGenerator brickGenerator, PadFactory padFactory, SpawnPointService spawnPointService,
-			PlayerInput playerInput, ScoreHolder scoreHolder)
+			PlayerInput playerInput, ScoreHolder scoreHolder, BallHolder ballHolder)
 		{
 			_uiStateMachine = uiStateMachine;
 			_stateMachine = stateMachine;
@@ -30,6 +32,7 @@ namespace _Assets.Scripts.Services.StateMachine.States
 			_spawnPointService = spawnPointService;
 			_playerInput = playerInput;
 			_scoreHolder = scoreHolder;
+			_ballHolder = ballHolder;
 		}
 
 		public async UniTask Enter()
@@ -44,6 +47,7 @@ namespace _Assets.Scripts.Services.StateMachine.States
 
 		public async UniTask Exit()
 		{
+			_ballHolder.DisablePhysics();
 			_scoreHolder.ResetPoints();
 			_playerInput.Disable();
 		}
