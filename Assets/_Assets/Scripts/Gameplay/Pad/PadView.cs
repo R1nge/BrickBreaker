@@ -6,6 +6,7 @@ namespace _Assets.Scripts.Gameplay.Pad
 {
 	public class PadView : MonoBehaviour
 	{
+		[SerializeField] private float limitX;
 		private PadController _padController;
 		[Inject] private PlayerInput _playerInput;
 
@@ -16,7 +17,7 @@ namespace _Assets.Scripts.Gameplay.Pad
 
 		private void Update()
 		{
-			_padController.Move();
+			_padController.Move(limitX);
 		}
 	}
 }

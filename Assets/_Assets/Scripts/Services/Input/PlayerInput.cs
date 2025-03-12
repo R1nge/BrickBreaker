@@ -1,4 +1,6 @@
-﻿namespace _Assets.Scripts.Services.Input
+﻿using UnityEngine;
+
+namespace _Assets.Scripts.Services.Input
 {
 	public class PlayerInput
 	{
@@ -8,8 +10,17 @@
 
 		public void Disable() => Enabled = false;
 
-		public float PositionX { get; private set; }
+		public float PositionXNormalized { get; private set; }
 
-		public void SetPlayerPositionX(float positionX) => PositionX = positionX;
+		public void SetPlayerPositionX(float positionX)
+		{
+			if (!Enabled)
+			{
+				Debug.LogWarning("Trying to set input when disabled");
+				return;
+			}
+
+			PositionXNormalized = positionX;
+		}
 	}
 }

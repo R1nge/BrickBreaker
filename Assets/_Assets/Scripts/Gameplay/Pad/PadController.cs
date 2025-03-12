@@ -14,10 +14,10 @@ namespace _Assets.Scripts.Gameplay.Pad
 			_playerInput = playerInput;
 		}
 
-		public void Move()
+		public void Move(float limiX)
 		{
 			Vector3 newPosition = _padTransform.position;
-			newPosition.x = _playerInput.PositionX;
+			newPosition.x = _playerInput.PositionXNormalized;
 			_padTransform.position = newPosition;
 		}
 	}
