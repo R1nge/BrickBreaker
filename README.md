@@ -26,3 +26,4 @@ Didn't unlock fps, may feel laggy
 
 https://github.com/user-attachments/assets/3216632f-f012-454d-9120-4305d1e8f57f
 
+https://docs.google.com/document/d/1q7QXRL4sa5eMQeZI68d12-o-4crMXkdTlePQgPtXcEo/edit?tab=t.0
